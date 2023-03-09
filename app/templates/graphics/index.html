@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráfico de Pastel</title>
+    <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>MK Fan Video Game</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static', filename='css/styles.css')}}" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='css/img.css')}}" rel="stylesheet" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+        // Cargar la librería de gráficos de Google
+        google.charts.load('current', {'packages':['corechart']});
+
+        // Cuando se haya cargado la librería, dibujar el gráfico de pastel
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // Obtener los datos de la API REST
+            fetch('../graphics')
+                .then(response => response.json())
+                .then(data => {
+                    // Convertir los datos a un array de arrays
+                    var dataArray = [['Juego', 'Puntuación']];
+                    for (var key in data) {
+                        dataArray.push([key, data[key]]);
+                    }
+
+                    // Crear un objeto DataTable con los datos
+                    var dataTable = google.visualization.arrayToDataTable(dataArray);
+
+                    // Configurar las opciones del gráfico de pastel
+                    var options = {
+                        title: 'Puntuaciones de Juegos',
+                        is3D: true,
+                        pieSliceText: 'value'
+                    };
+
+                    // Dibujar el gráfico de pastel
+                    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                    chart.draw(dataTable, options);
+                });
+        }
+    </script>
+</head>
+<html>
+  <body>
+
+  
+    <!-- Barra de navegacion-->
+   <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Mortal Kombat 12 (Fan edition)</a>
+        <a class="btn btn-primary" href="#signup">Descargar</a>
+        <a href="/graphics">Grapihcs</a>
+        <a href="/additem">Add-link</a>
+    </div>
+    
+   </nav>
+    <div id="piechart" style="width: 100; height: 100px;"></div>
+  </body>
+
+
+
+
+
+
+                
+                
+        
+{% include 'footer.html' %}

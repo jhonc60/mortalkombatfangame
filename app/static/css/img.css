@@ -1,0 +1,6 @@
+.bg{
+   background-color: red;
+   border: solid 10px black;
+   background-image: url();
+   background-image:url({{ url_for('static', filename='assets/img/bg-showcase-1.jpg')}})
+}

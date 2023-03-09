@@ -1,0 +1,12 @@
+{% include '/header.html' %}
+<form action="{{url_for('/add-item')}}" method="post">
+    <div class="form-control form-control-sm ">
+      <label for="exampleInputEmail1">Direccion de Email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+  
+{% include '/footer.html' %}

@@ -1,0 +1,93 @@
+body{
+    max-width: 100%;
+    max-height: 100vh;
+    font-family: sans-serif,Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom right, darkred, orange);
+    margin: 0;
+    padding: 0;
+    color:blanchedalmond;
+    border: solid green 5px;
+}
+
+.sprite {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3157759/MK3-JaxRunning.png);
+    background-repeat: no-repeat;
+    display: block;
+    width: 101px;
+    height: 140px;
+    animation-name: running;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(1);
+    zoom: 1.5;
+    -moz-transform: scale(1.5);
+    -moz-transform-origin: 151px 0;
+    border: dotted blue 2px;
+  }
+  
+  .box {
+    position: relative;
+    top: 15px;
+    animation-name: moving;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    border: dotted white 2px;
+  }
+  
+  @keyframes moving {
+    0% {
+      left: -101px;
+    }
+    100% {
+      left: 100vw;
+    }
+  }
+  
+  @keyframes running {
+    0% {
+      background-position: -5px -5px;
+    }
+    8.3% {
+      background-position: -116px -5px;
+    }
+    16.7% {
+      background-position: -227px -5px;
+    }
+    25% {
+      background-position: -338px -5px;
+    }
+    33.3% {
+      background-position: -5px -155px;
+    }
+    41.7% {
+      background-position: -116px -155px;
+    }
+    50% {
+      background-position: -227px -155px;
+    }
+    58.3% {
+      background-position: -338px -155px;
+    }
+    66.7% {
+      background-position: -449px -5px;
+    }
+    75% {
+      background-position: -449px -155px;
+    }
+    83.3% {
+      background-position: -5px -305px;
+    }
+    91.7% {
+      background-position: -116px -305px;
+    }
+    100% {
+      background-position: -5px -5px;
+    }
+  }
+
+.image{
+    width: 15%;
+    height: 10px;
+    
+  }
